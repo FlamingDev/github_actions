@@ -2,14 +2,38 @@ name: Adicionar Petiano no Banco de Dados
 
 on:
   workflow_dispatch:
-
+    inputs:
+      nome_completo:
+        description: "Nome completo do petiano: "
+        required: true
+        type: string
+      primeiro_nome:
+        description: "Primeiro nome do petiano: "
+        required: true
+        type: string
+      ultimo_nome:
+        description: "Último nome do petiano: "
+        required: true
+        type: string
+      ano:
+        description: "Ano que o petiano entrou (ex: 2025): "
+        required: true
+      periodo:
+        description: "Periodo do petiano (ex: 4): "
+        required: true
 jobs:
   inserirPetiano:
     runs-on: ubuntu-latest
     container:
       image: mysql:8.0
     steps:
-     - name: Inserir integrante 
+     - name: Inserir integrante no Banco de Dados
+       env:
+        NOME_COMPLETO: ${{ github.event.inputs.nome_completo }} 
+        PRIMEIRO_NOME: ${{ github.event.inputs.primeiro_nome }}
+        ULTIMO_NOME: ${{ github.event.inputs.ultimo_nome }}
+        ANO: ${{ github.event.inputs.ano }}
+        PERIODO: ${{ github.event.inputs.periodo }}
        run: |
           mysql \
             -h ${{ secrets.DB_HOST }} \
@@ -17,4 +41,4 @@ jobs:
             -p${{ secrets.DB_PASSWORD }} \
             ${{ secrets.DB_NAME }} \
             -e "INSERT INTO petianos (nome_completo, primeiro_nome, ultimo_nome, ano, periodo, ativo, orientador, voluntario)
-            VALUES ('teste', 'teste', 'teste', 2025, 4, 1, 0, 0);"
+            VALUES ('$NOME_COMPLETO', 'PRIMEIRO_NOME', 'ULTIMO_NOME', $ANO, $PERIODO, 1, 0, 0);"
