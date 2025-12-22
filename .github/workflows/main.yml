@@ -50,5 +50,5 @@ jobs:
             WHERE NOT EXISTS (
               SELECT 1 
               FROM petianos 
-              WHERE nome_completo != '$NOME_COMPLETO'
+              WHERE nome_completo = '$NOME_COMPLETO'
             );"
