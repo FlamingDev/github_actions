@@ -46,4 +46,9 @@ jobs:
             -p${{ secrets.DB_PASSWORD }} \
             ${{ secrets.DB_NAME }} \
             -e "INSERT INTO petianos (nome_completo, primeiro_nome, ultimo_nome, ano, periodo, ativo, orientador, voluntario, imagem, sobre)
-            VALUES ('$NOME_COMPLETO', '$PRIMEIRO_NOME', '$ULTIMO_NOME', $ANO, $PERIODO, 1, 0, 0, '$IMAGEM', '$SOBRE');"
+            SELECT '$NOME_COMPLETO', '$PRIMEIRO_NOME', '$ULTIMO_NOME', $ANO, $PERIODO, 1, 0, 0, '$IMAGEM', '$SOBRE'
+            WHERE NOT EXISTS (
+              SELECT 1 
+              FROM petianos 
+              WHERE nome_completo != '$NOME_COMPLETO'
+            );"
