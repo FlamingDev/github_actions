@@ -17,4 +17,4 @@ jobs:
             -p${{ secrets.DB_PASSWORD }} \
             ${{ secrets.DB_NAME }} \
             -e "INSERT INTO petianos (nome_completo, primeiro_nome, ultimo_nome, ano, periodo, ativo, orientador, voluntario)
-            VALUES (teste, teste, teste, 2025, 4, 1, 0, 0);"
+            VALUES ('teste', 'teste', 'teste', 2025, 4, 1, 0, 0);"
