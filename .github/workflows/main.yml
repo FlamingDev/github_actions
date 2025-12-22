@@ -37,8 +37,8 @@ jobs:
         ULTIMO_NOME: ${{ github.event.inputs.ultimo_nome }}
         ANO: ${{ github.event.inputs.ano }}
         PERIODO: ${{ github.event.inputs.periodo }}
-        IMAGEM: ${{ github.event.inputs.imagem || 'null'}}
-        SOBRE: ${{ github.event.inputs.sobre || 'null'}}
+        IMAGEM: ${{ github.event.inputs.imagem || null}}
+        SOBRE: ${{ github.event.inputs.sobre || null}}
        run: |
           mysql \
             -h ${{ secrets.DB_HOST }} \
