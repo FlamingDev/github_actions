@@ -1,0 +1,10 @@
+name: Adicionar Petiano no Banco de Dados
+
+on:
+  workflow_dispatch:
+
+jobs:
+  addPetiano:
+    runs-on: ubuntu-latest
+    steps:
+     - run: echo "Hello World"
