@@ -41,4 +41,4 @@ jobs:
             -p${{ secrets.DB_PASSWORD }} \
             ${{ secrets.DB_NAME }} \
             -e "INSERT INTO petianos (nome_completo, primeiro_nome, ultimo_nome, ano, periodo, ativo, orientador, voluntario)
-            VALUES ('$NOME_COMPLETO', 'PRIMEIRO_NOME', 'ULTIMO_NOME', $ANO, $PERIODO, 1, 0, 0);"
+            VALUES ('$NOME_COMPLETO', '$PRIMEIRO_NOME', '$ULTIMO_NOME', $ANO, $PERIODO, 1, 0, 0);"
