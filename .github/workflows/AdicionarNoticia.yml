@@ -26,7 +26,7 @@ jobs:
         FOTO: ${{ github.event.inputs.foto }}
        run: |
           # Pegar a data atual em formato YYYY-MM-DD
-          DATA=$(date +"%Y-%m-%d")
+          DATA=$(date +%Y-%m-%d)
           mysql \
             -h ${{ secrets.DB_HOST }} \
             -u ${{ secrets.DB_USER }} \
