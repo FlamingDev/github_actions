@@ -1,4 +1,4 @@
-name: Adicionar Petiano no Banco de Dados
+name: Desativar Petiano no Banco de Dados
 
 on:
   workflow_dispatch:
