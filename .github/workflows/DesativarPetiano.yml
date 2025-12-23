@@ -10,7 +10,7 @@ on:
         description: "Último nome do petiano: "
         required: true  
 jobs:
-  inserirPetiano:
+  desativarPetiano:
     runs-on: ubuntu-latest
     container:
       image: mysql:8.0
