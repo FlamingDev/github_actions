@@ -9,6 +9,9 @@ on:
       texto:
         description: "Texto da notícia: "
         required: true
+      data:
+        description: "Data da notícia YYYY-MM-DD (Caso não informado, usa a atual) : "
+        required: false
       foto:
         description: "Nome da foto da notícia no servidor: "
         required: false
@@ -24,8 +27,9 @@ jobs:
         TITULO: ${{ github.event.inputs.titulo }} 
         TEXTO: ${{ github.event.inputs.texto }}
         FOTO: ${{ github.event.inputs.foto }}
+        DATA: ${{ github.event.inputs.data || null }}
        run: |
-          DATA=$(date +"%Y-%m-%d") 
+          DATA=$(($DATA? $DATA: date +"%Y-%m-%d"))
           mysql \
             -h ${{ secrets.DB_HOST }} \
             -u ${{ secrets.DB_USER }} \
