@@ -6,15 +6,18 @@ on:
       titulo:
         description: "Titulo da notícia: "
         required: true
+        type: text
       texto:
         description: "Texto da notícia: "
         required: true
+        type: text
       data:
         description: "Data da notícia YYYY-MM-DD (Caso não informado, usa a atual) : "
         required: false
       foto:
         description: "Nome da foto da notícia no servidor: "
         required: false
+        type: text
         
 jobs:
   inserirNoticia:
