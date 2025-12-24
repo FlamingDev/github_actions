@@ -27,9 +27,11 @@ jobs:
         TITULO: ${{ github.event.inputs.titulo }} 
         TEXTO: ${{ github.event.inputs.texto }}
         FOTO: ${{ github.event.inputs.foto }}
-        DATA: ${{ github.event.inputs.data || null }}
+        DATA: ${{ github.event.inputs.data }}
        run: |
-          DATA=$(($DATA? $DATA: date +"%Y-%m-%d"))
+          if [ -z "$DATA" ]; then
+            DATA=$(date +"%Y-%m-%d")
+          fi
           mysql \
             -h ${{ secrets.DB_HOST }} \
             -u ${{ secrets.DB_USER }} \
