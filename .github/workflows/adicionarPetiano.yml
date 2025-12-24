@@ -40,6 +40,9 @@ jobs:
         IMAGEM: ${{ github.event.inputs.imagem }}
         SOBRE: ${{ github.event.inputs.sobre }}
        run: |
+          export LANG=C.UTF-8
+          export LC_ALL=C.UTF-8
+          
           EXISTE=$(mysql \
             -h ${{ secrets.DB_HOST }} \
             -u ${{ secrets.DB_USER }} \
